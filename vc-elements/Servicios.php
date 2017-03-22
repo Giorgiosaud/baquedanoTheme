@@ -136,7 +136,7 @@ function vc_servicio_interno_html($atts,$content){
 		$contenido = $content;
 		$contenido = apply_filters( 'the_content', $contenido );
 		$contenido = str_replace( ']]>', ']]&gt;', $contenido );
-		echo "<li><h2>$titulo<i></i></h2><strong>$sub_titulo</strong> $content<a href='$link' class='quote'>VER MÁS</a></li>";
+		echo "<li><h2>$titulo<i></i></h2><strong>$sub_titulo</strong> $contenido<a href='$link' class='quote'>VER MÁS</a></li>";
 	}
 	if($estilo=="Miniatura"){
 		$imagentag=wp_get_attachment_image($imagen,'Sliders Size');
