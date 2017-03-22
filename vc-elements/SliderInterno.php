@@ -140,6 +140,6 @@ if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
     }
 }
 if ( class_exists( 'WPBakeryShortCode' ) ) {
-    class WPBakeryShortCode_Slide_Interno extends WPBakeryShortCode {
+    class WPBakeryShortCode_Slide extends WPBakeryShortCode {
     }
 }
