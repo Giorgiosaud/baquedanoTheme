@@ -19,11 +19,11 @@ Class CustomPosts{
 				'Name'=>'Proyectos',
 				'Singular'=>'proyecto',
 				),
-			array(
-				'customPostName'=>'testimonios',
-				'Name'=>'Testimonios',
-				'Singular'=>'Testimonio',
-				),
+			// array(
+			// 	'customPostName'=>'testimonios',
+			// 	'Name'=>'Testimonios',
+			// 	'Singular'=>'Testimonio',
+			// 	),
 			// array(
 			// 	'customPostName'=>'equipo',
 			// 	'Name'=>'Equipo',

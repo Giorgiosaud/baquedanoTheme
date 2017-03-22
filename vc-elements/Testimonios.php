@@ -1,181 +1,179 @@
 <?php
-/*
-Element Description: VC Info Box
-*/
-
-// Element Class 
-class vcTestimonios extends WPBakeryShortCode {
-
-    // Element Init
-    function __construct() {
-        add_action( 'init', array( $this, 'vc_testimonio_mapping' ) );
-        add_shortcode( 'vc_testimonio', array( $this, 'vc_testimonios_html' ) );
-    }
-
-    // Element Mapping
-    public function vc_testimonio_mapping() {
-
-        // Stop all if VC is not enabled
-        if ( !defined( 'WPB_VC_VERSION' ) ) {
-            return;
-        }
-            // Map the block with vc_map()
-        vc_map(
-            array(
-                'name'=>__('Testimonios Principal','baquedano'),
-                'base'=>'vc_testimonio',
-                'description'=>__('Add main project to the page based on slides custom post'),
-                'class'=>'mainproject',
-                'show_settings_on_create'=>true,
-                'weight'=>10,
-                'category'=>__('Structure'),
-                'group'=>__('Partes Baquedano'),
-                
-                'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
-                'params'=>array(
-                    array(
-                        'type'=>'textfield',
-                        'holder'=>'h1',
-                        'class'=>'titulo',
-                        'heading' => __( 'Titulo' ),
-                        'param_name' => 'titulo',
-                        'value' => __('<span>¿QUÉ DICEN</span> NUESTROS CLIENTES? <i></i>'),
-                        'description' => __( 'Titulo de Seccion' ),
-                        'admin_label' => false,
-                        'weight' => 0,
-                        'group' => 'Partes Baquedano',
-                        ),
-                    array(
-                        'type'=>'textfield',
-                        'holder'=>'h4',
-                        'class'=>'subtitulo',
-                        'heading' => __( 'Sub Titulo' ),
-                        'param_name' => 'subtitulo',
-                        'value' => __('<strong>TESTIMONIOS DE CLIENTES SATISFECHOS</strong>'),
-                        'description' => __( 'Titulo de Seccion' ),
-                        'admin_label' => false,
-                        'weight' => 0,
-                        'group' => 'Partes Baquedano',
-                        ),
-                    array(
-                        'type'=>'textfield',
-                        'heading' => __( 'Cantidad de Testimonios' ),
-                        'param_name' => 'testimonios',
-                        'value' => 4,
-                        'description' => __( 'Cantidad de Testimonios' ),
-                        'admin_label' => true,
-                        'weight' => 0,
-                        'group' => 'Partes Baquedano',
-                        )
-                    )
-                )
-            );
-
-    } 
 
 
-    // Element HTML
-    public function vc_testimonios_html( $atts ) {
-        extract(shortcode_atts(array(
-            'testimonios'=>4,
-            'titulo'=>'<span>¿QUÉ DICEN</span> NUESTROS CLIENTES? <i></i>',
-            'subtitulo'=>'<strong>TESTIMONIOS DE CLIENTES SATISFECHOS</strong>'
+vc_map( array(
+    "name" => __("Testimonios"),
+    "base" => "testimonios",
+    "content_element" => true,
+    "show_settings_on_create" => false,
+    "is_container" => true,
+    'weight'=>10,
+    'category'=>__('Structure'),
+    'group'=>__('Partes Baquedano'),
+    'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
+    "params" => array(
+        // add params same as with any other content element
+        array(
+            "type" => "textfield",
+            'holder' => 'h1',
+            "heading" => __("Titulo"),
+            "value"=>"¿QUÉ DICEN</span> NUESTROS CLIENTES?",
+            "param_name" => "titulo",
+            'weight'=>10,
+            "description" => __("Titulo de Testimonios")
+            ),
+        array(
+            "type" => "textfield",
+            'holder' => 'h1',
+            "heading" => __("Sub Titulo"),
+            "value"=>"TESTIMONIOS DE CLIENTES SATISFECHOS",
+            "param_name" => "sub_titulo",
+            'weight'=>10,
+            "description" => __("Sub Titulo de Equipo.")
+            ),
+        array(
+            'type' => 'textfield',
+                    // 'holder'=>'div',
+            'heading' => __( 'link' ),
+            'param_name' => 'link',
+            'value' => __( '#', 'baquedano' ),
+            'admin_label' => true,
+            'weight' => 1,
+            )
+        ),
+    "as_parent" => array('only' => 'testimonio'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
 
-            ),$atts));
+    "js_view" => 'VcColumnView'
+    ) );
+add_shortcode( 'testimonios', 'vc_testimonios_html'  );
 
-        $args=array(
-            'post_type' => 'testimonios',
-            'posts_per_page'=>$testimonios
-            );
-        $the_query = new \WP_Query( $args );
-        // The Loop
-        if ( $the_query->have_posts() ) {
-            $posts=array();
-            while ( $the_query->have_posts() ) {
-                $the_query->the_post();
-                $content = get_the_content( $more_link_text, $strip_teaser );
-                $content = apply_filters( 'the_content', $content );
-                $content = str_replace( ']]>', ']]&gt;', $content );
-                $post=array(
-                    'titulo'=>get_the_title(),
-                    'imagen'=>get_the_post_thumbnail(null,'full'),
-                    'contenido'=>$content
-                    );
-                array_push($posts,$post);
-            }
-            wp_reset_postdata();
-            
-        }
-        ob_start();  
-        ?>
-        <div class="testimonial-container">
-            <div class="container">
-                <i class="corve"><img src="<?= get_template_directory_uri()?>/assets/svg/corve.svg" alt="" class="svg"/></i>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 tag-bg animate-effect">
-                        <div class="customer-says">
-                            <h2><?= $titulo?></h2>
-                            <?= $subtitulo?>
-                        </div>
+function vc_testimonios_html( $atts ,$content) {
+    extract(shortcode_atts(array(
+        'titulo'=>'<span>¿QUÉ DICEN</span> NUESTROS CLIENTES? <i></i>',
+        'subtitulo'=>'<strong>TESTIMONIOS DE CLIENTES SATISFECHOS</strong>'
+
+        ),$atts));
+    $testimonio_full=str_replace("[testimonio ",'[testimonio estilo="Full" ',$content);
+    $testimonio_imagen=str_replace("[testimonio ",'[testimonio estilo="Imagen" ',$content);
+
+    ob_start();  
+    ?>
+    <div class="testimonial-container">
+        <div class="container">
+            <i class="corve"><img src="<?= get_template_directory_uri()?>/assets/svg/corve.svg" alt="" class="svg"/></i>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 tag-bg animate-effect">
+                    <div class="customer-says">
+                        <h2><?= $titulo?></h2>
+                        <?= $subtitulo?>
                     </div>
+                </div>
 
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="testimonial-box">
-                            <div class="view-list animate-effect">
-                                <div class="flexslider" id="testimonial-silder">
-                                    <ul class="slides">
-                                        <?php foreach ($posts as $post) {
-                                            ?>
-                                            <li>
-                                                <blockquote>
-                                                    <i class="fa fa-quote-right"></i>
-                                                    <p>
-                                                        <?= $post['contenido']?>
-                                                    </p>
-                                                    <footer>
-                                                        <?= $post['titulo']?>
-                                                    </footer>
-                                                </blockquote>
-                                            </li>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="testimonial-box">
+                        <div class="view-list animate-effect">
+                            <div class="flexslider" id="testimonial-silder">
+                                <ul class="slides">
+                                    <?= do_shortcode($testimonio_full)?>
 
-                                            <?php
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
-                            <div class="thumb-box animate-effect">
-                                <div class="flexsilder" id="testimonial-carousel">
-                                    <ul class="slides">
-                                        <?php foreach ($posts as $post) {
-                                            ?>
-                                            <li>
-                                                <a href="#">
-                                                    <?=$post['imagen']?>
-                                                </a>
-                                            </li>
-                                            <?php 
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="thumb-box animate-effect">
+                            <div class="flexsilder" id="testimonial-carousel">
+                                <ul class="slides">
+                                    <?= do_shortcode($testimonio_imagen)?>
+                           
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<?php
-$output_string = ob_get_contents();
-ob_end_clean();
+    </div>
+    <?php
+    $output_string = ob_get_contents();
+    ob_end_clean();
 
-return $output_string;
+    return $output_string;
 
         //.. the Code is in the next steps ..//
 
 } 
+vc_map( array(
+    "name" => __("Testimonio"),
+    "base" => "testimonio",
+    "content_element" => true,
+    "as_child" => array('only' => 'testimonios'), // Use only|except attributes to limit parent (separate multiple values with comma)
+    'weight'=>10,
+    'category'=>__('Structure'),
+    'group'=>__('Partes Baquedano'),
+    'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
+    "params" => array(
+        // add params same as with any other content element
+        array(
+            "type" => "textfield",
+            'holder' => 'h2',
+            'value'=>'Nombre',
+            "heading" => __("Nombre y Apellido"),
+            "param_name" => "nombre",
+            "description" => __("Nombre y Apellido.")
+            ),
+        array(
+            'type' => 'textarea_html',
+            'label' => __( 'Testimonio', 'baquedano' ),
+            'holder' => 'p',
+            'param_name' => 'content',
+            'value'=>__('<p>06 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>'),
+            'description' => __( 'Testimonio', 'baquedano' ),
+            ),
+        array(
+            "type" => "attach_image",
+            "heading" => __("Imagen"),
+            "param_name" => "imagen",
+            'admin_label' => true,
+            "description" => __("Imagen Miembro.")
+            ),
+        array(
+            'type' => 'textfield',
+                    // 'holder'=>'div',
+            'heading' => __( 'link' ),
+            'param_name' => 'link',
+            'value' => __( '#', 'baquedano' ),
+            'admin_label' => true,
+            'weight' => 1,
+            )
 
-} // End Element Class
+        )
+    ) );
+add_shortcode( 'testimonio',  'vc_testimonio'  );
+function vc_testimonio( $atts,$content ) {
+    extract(shortcode_atts(array(
+        'nombre'=>'Nombre y Apellido',
+        'imagen'=>36,
+        'link'=>'#',
+        'estilo'=>'Full'
+        ),$atts));
 
-// Element Class Init
-new vcTestimonios();    
+    $contenido = $content;
+    $contenido = apply_filters( 'the_content', $contenido );
+    $contenido = str_replace( ']]>', ']]&gt;', $contenido );
+    if($estilo=="Full"){
+        echo "<li><blockquote><i class='fa fa-quote-right'></i>$contenido<footer>$nombre</footer></blockquote></li>";
+    }
+    if($estilo=="Imagen"){
+        $imagentag=wp_get_attachment_image($imagen,'full');
+
+        echo "<li><a href='$link'>$imagentag</a></li>";
+    }
+    
+} 
+if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
+    class WPBakeryShortCode_Testimonios extends WPBakeryShortCodesContainer {
+    }
+}
+if ( class_exists( 'WPBakeryShortCode' ) ) {
+    class WPBakeryShortCode_Testimonio extends WPBakeryShortCode {
+    }
+}
