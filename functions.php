@@ -26,6 +26,7 @@ function vc_before_init_actions() {
 	require_once( get_template_directory().'/vc-elements/SliderInterno.php' ); 
 	require_once( get_template_directory().'/vc-elements/Info.php' ); 
 	require_once( get_template_directory().'/vc-elements/Service.php' ); 
+	require_once( get_template_directory().'/vc-elements/Servicios.php' ); 
 	require_once( get_template_directory().'/vc-elements/Projects.php' ); 
 	require_once( get_template_directory().'/vc-elements/Testimonios.php' ); 
 	require_once( get_template_directory().'/vc-elements/Quote.php' ); 

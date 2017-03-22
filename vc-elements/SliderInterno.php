@@ -2,62 +2,50 @@
 /*
 Element Description: VC Info Box
 */
+//Register "container" content element. It will hold all your inner (child) content elements
+vc_map( array(
+    "name" => __("Slider Interno", "my-text-domain"),
+    "base" => "slider_interno",
+    "as_parent" => array('only' => 'slide_interno'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
+    "content_element" => true,
+    "show_settings_on_create" => false,
+    "is_container" => true,
+    'weight'=>10,
+    'category'=>__('Structure'),
+    'group'=>__('Partes Baquedano'),
+    'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
+    "params" => array(
+        // add params same as with any other content element
+        array(
+            "type" => "textfield",
+            "heading" => __("Extra class name", "my-text-domain"),
+            "param_name" => "el_class",
+            "description" => __("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "my-text-domain")
+            )
+        ),
+    "js_view" => 'VcColumnView'
+    ) );
+add_shortcode( 'slider_interno', 'vc_slider_interno_html'  );
 
-// Element Class 
-class vcSliderInterno extends WPBakeryShortCode {
-
-    // Element Init
-    function __construct() {
-        add_action( 'init', array( $this, 'vc_slider_interno_mapping' ) );
-        add_shortcode( 'vc_slider_interno', array( $this, 'vc_slider_interno_html' ) );
-    }
-
-    // Element Mapping
-    public function vc_slider_interno_mapping() {
-
-        // Stop all if VC is not enabled
-        if ( !defined( 'WPB_VC_VERSION' ) ) {
-            return;
-        }
-            // Map the block with vc_map()
-        vc_map(
-            array(
-                'name'=>__('Slider Interno','baquedano'),
-                'base'=>'vc_slider_interno',
-                "as_parent" => array('only' => 'vc_slide'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
-                "content_element" => true,
-                "is_container" => true,
-                "js_view" => 'VcColumnView',
-                'description'=>__('Add Slider to the page'),
-                'show_settings_on_create'=>true,
-                'weight'=>10,
-                'category'=>__('Structure'),
-                'group'=>__('Partes Baquedano'),
-                'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
-                'params'=>array(
-                    )
-                )
-            );
-
-    } 
-
-
-    // Element HTML
-    public function vc_slider_interno_html( $atts,$content ) {
-        extract(shortcode_atts(array(
-            ),$atts));
-        ob_start();  
-        ?>
+function vc_slider_interno_html($atts,$content){
+    extract(shortcode_atts(array(
+        ),$atts));
+    $content_image=str_replace("[slide_interno ",'[slide_interno estilo="Imagen" ',$content);
+    $content_titulo=str_replace("[slide_interno ",'[slide_interno estilo="Titulo" ',$content);
+    $content_content=str_replace("[slide_interno ",'[slide_interno estilo="Content" ',$content);
+    ob_start();  
+    ?>
+    <div id="slider">
         <div class="img-slider">
             <ul class="top-banner">
-                <?= $content ?>
+                <?=  do_shortcode($content_image) ?>
             </ul>
         </div>
         <div class="detail-content">
             <div class="container">
                 <div class="detail">
                     <div class="top-row">
-                        <?= $content ?>
+                        <?=  do_shortcode($content_titulo) ?>
                         <div class="direction-arrrow">
                             <a href="javascript:;" class="prv"></a>
                             <a href="javascript:;" class="next"></a>
@@ -66,100 +54,92 @@ class vcSliderInterno extends WPBakeryShortCode {
                     </div>
 
                     <ul class="bottom-sec" id="bottom-sec">
-                        <?= $content ?>
+                        <?=  do_shortcode($content_content,false) ?>
                     </ul>
-
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php
-        $output_string = ob_get_contents();
-        ob_end_clean();
 
-        return $output_string;
+    <?php
+    $output_string = ob_get_contents();
+    ob_end_clean();
+
+    return $output_string;
 
         //.. the Code is in the next steps ..//
 
-    } 
-
-} // End Element Class
-
-// Element Class Init
-new vcSliderInterno();   
-class vcSlideInterno extends WPBakeryShortCode {
-
-    // Element Init
-    function __construct() {
-        add_action( 'init', array( $this, 'vc_slide_interno_mapping' ) );
-        add_shortcode( 'vc_slide_interno', array( $this, 'vc_slide_interno_html' ) );
-    }
-
-    // Element Mapping
-    public function vc_slide_interno_mapping() {
-
-        // Stop all if VC is not enabled
-        if ( !defined( 'WPB_VC_VERSION' ) ) {
-            return;
-        }
-            // Map the block with vc_map()
-        vc_map(array(
-            "name" => __("Slider Item", "my-text-domain"),
-            "base" => "vc_slide_interno",
-            "content_element" => true,
-            "as_child" => array('only' => 'vc_slider_interno'), // Use only|except attributes to limit parent (separate multiple values with comma)
-            "params"=> array(
-              array(
-                "type" => "textfield",
-                "heading" => __("Titulo", "my-text-domain"),
-                "param_name" => "titulo",
-                "description" => __("Titulo Del Slide.", "my-text-domain")
-                ),
-              array(
-                "type" => "attach_image",
-                "heading" => __("Imagen", "my-text-domain"),
-                "param_name" => "imagen",
-                "description" => __("Imagen Slide.", "my-text-domain")
-                ),
-              array(
-                'label' => __( 'Informacion', 'baquedano' ),
-                'holder' => 'p',
-                'type' => 'textarea_html',
-                'param_name' => 'content',
-                'value'=>__('<h2>WWW.BAQUEDANOCONSULTORES.CL</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>','baquedano'),
-                'description' => __( 'Informacion', 'baquedano' ),
-                'group' => 'Partes Baquedano',
-                ),
-              array(
-                'type' => 'textfield',
+}
+vc_map( array(
+    "name" => __("Slide Interno", "my-text-domain"),
+    "base" => "slide_interno",
+    "content_element" => true,
+    "as_child" => array('only' => 'slider_interno'), // Use only|except attributes to limit parent (separate multiple values with comma)
+    'weight'=>10,
+    'category'=>__('Structure'),
+    'group'=>__('Partes Baquedano'),
+    'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
+    "params" => array(
+        // add params same as with any other content element
+        array(
+            "type" => "textfield",
+            'holder' => 'h1',
+            "heading" => __("Titulo", "my-text-domain"),
+            "param_name" => "titulo",
+            "description" => __("Titulo Del Slide.", "my-text-domain")
+            ),
+        array(
+            "type" => "attach_image",
+            "heading" => __("Imagen", "my-text-domain"),
+            "param_name" => "imagen",
+            'admin_label' => true,
+            "description" => __("Imagen Slide.", "my-text-domain")
+            ),
+        array(
+            'type' => 'textarea_html',
+            'label' => __( 'Informacion', 'baquedano' ),
+            'holder' => 'p',
+            'param_name' => 'content',
+            'value'=>__('<h2>WWW.BAQUEDANOCONSULTORES.CL</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>','baquedano'),
+            'description' => __( 'Informacion', 'baquedano' ),
+            ),
+        array(
+            'type' => 'textfield',
                     // 'holder'=>'div',
-                'heading' => __( 'link' ),
-                'param_name' => 'link',
-                'value' => __( '#', 'baquedano' ),
-                'admin_label' => true,
-                'weight' => 0,
-                'group' => 'Partes Baquedano',
-                ),  
-              )
-
-            ));
+            'heading' => __( 'link' ),
+            'param_name' => 'link',
+            'value' => __( '#', 'baquedano' ),
+            'admin_label' => true,
+            'weight' => 0,
+            )
+        )
+    ) );
+add_shortcode( 'slide_interno',  'vc_slide_interno_html'  );
+function vc_slide_interno_html($atts,$content){
+    extract(shortcode_atts(array(
+        'titulo'=>__('WWW.BAQUEDANOCONSULTORES.CL. <i></i>'),
+        // 'content'=>__('Te ofrecemos soluciones habitacionales adaptadas a tus necesidades.'),
+        'imagen'=>'83',
+        'link'=>'#', 
+        'estilo'=>'Titulo'
+        ),$atts));
+    if($estilo=="Imagen"){
+        echo '<li>'.wp_get_attachment_image($imagen,'Sliders Size').'</li>';
     }
-    public function vc_slide_interno_html(){
-        extract(shortcode_atts(array(
-            'titulo'=>__('WWW.BAQUEDANOCONSULTORES.CL. <i></i>'),
-            'content'=>__('Te ofrecemos soluciones habitacionales adaptadas a tus necesidades.'),
-            'imagen'=>'83',
-            'boton'=>'<a href="#">SOLICITAR MÁS INFORMACIÓN</a>', 
-            'estilo'=>'Titulo'
-            ),$atts));
-        ob_start();
-        ?>
-
-        <h1><?= $titulo?></h1>
-        <?php
-        $output_string = ob_get_contents();
-        ob_end_clean();
-        return $output_string;
+    if($estilo=="Titulo"){
+        echo '<strong>'.$titulo.'</strong>';
+    }
+    if($estilo=="Content"){
+        echo '<li class="inner-bottom-sec">'.$content.'<a href="'.$link.']?>">VER MÁS</a></li>';
     }
 }
-new vcSlideInterno();
+//Your "container" content element should extend WPBakeryShortCodesContainer class to inherit all required functionality
+if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
+    class WPBakeryShortCode_Slider_Interno extends WPBakeryShortCodesContainer {
+    }
+}
+if ( class_exists( 'WPBakeryShortCode' ) ) {
+    class WPBakeryShortCode_Slide_Interno extends WPBakeryShortCode {
+    }
+}
