@@ -46,13 +46,11 @@ class vcProject extends WPBakeryShortCode {
                         ),
                     array(
                         'type'=>'textfield',
-                        'holder'=>'div',
-                        'class'=>'proyectos',
                         'heading' => __( 'Cantidad de Proyectos' ),
                         'param_name' => 'proyectos',
                         'value' => 2,
                         'description' => __( 'Cantidad de Proyectos' ),
-                        'admin_label' => false,
+                        'admin_label' => true,
                         'weight' => 0,
                         'group' => 'Partes Baquedano',
                         )
