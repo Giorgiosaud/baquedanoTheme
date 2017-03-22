@@ -46,13 +46,11 @@ class vcService extends WPBakeryShortCode {
                         ),
                     array(
                         'type'=>'textfield',
-                        'holder'=>'div',
-                        'class'=>'servicios',
                         'heading' => __( 'Cantidad de Servicios' ),
                         'param_name' => 'servicios',
                         'value' => 5,
                         'description' => __( 'Cantidad de Servicios' ),
-                        'admin_label' => false,
+                        'admin_label' => true,
                         'weight' => 0,
                         'group' => 'Partes Baquedano',
                         )
