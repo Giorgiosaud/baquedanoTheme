@@ -90,34 +90,33 @@ class vcInfoInterna extends WPBakeryShortCode {
 		$arrayImages=explode(',', $imagenes);
 		ob_start();  
 		?>
+		<div class="container">
+			<div class="col-xs-12 col-sm-6 ">
+				<div class="about-detail">
+					<h3> <?= $title ?> <i></i></h3>
+					<h4><?= $sub_title ?></h4>
 
-		<div class="col-xs-12 col-sm-6 ">
-			<div class="about-detail">
-				<h3> <?= $title ?> <i></i></h3>
-				<h4><?= $sub_title ?></h4>
+					<p>
+						<?= $content ?>
+					</p>
 
-				<p>
-					<?= $content ?>
-				</p>
+				</div>
+			</div>
 
+			<div class="col-xs-12 col-sm-6 ">
+				<div class="about-img ">
+					<?php for ($i=0; $i < count($arrayImages); $i++) { ?>
+					<?php 
+					$imagen=wp_get_attachment_image($arrayImages[$i],'full');
+					if($i==0){
+						$imagen=wp_get_attachment_image( $arrayImages[$i],  'full', false,array('class'=>'coll') );
+					}
+					echo $imagen;
+					?>
+					<?php }?>
+				</div>
 			</div>
 		</div>
-
-		<div class="col-xs-12 col-sm-6 ">
-			<div class="about-img ">
-				<?php for ($i=0; $i < count($arrayImages); $i++) { ?>
-				<?php 
-				$imagen=wp_get_attachment_image($arrayImages[$i],'full');
-				if($i==0){
-					$imagen=wp_get_attachment_image( $arrayImages[$i],  'full', false,array('class'=>'coll') );
-				}
-				echo $imagen;
-				?>
-				<?php }?>
-			</div>
-		</div>
-
-
 		<?php
 		$output_string = ob_get_contents();
 		ob_end_clean();
