@@ -59,11 +59,6 @@ function vc_service_html( $atts,$content ) {
 			</div>
 		</div>
 	</div>
-
-
-
-
-
 	<?php
 	$output_string = ob_get_contents();
 	ob_end_clean();
@@ -94,8 +89,8 @@ vc_map( array(
     		),
     	array(
     		"type" => "textfield",
-    		'holder' => 'h2',
-    		'value'=>'Servicio',
+    		'holder' => 'h3',
+    		'value'=>'WWW.BAQUEDANOCONSULTORES.CL',
     		"heading" => __("Sub Titulo"),
     		"param_name" => "sub_titulo",
     		"description" => __("Sub Titulo Del Servicio.")
@@ -138,6 +133,9 @@ function vc_servicio_interno_html($atts,$content){
 		'estilo'=>'Titulo'
 		),$atts));
 	if($estilo=="Slides"){
+		$contenido = $content;
+		$contenido = apply_filters( 'the_content', $contenido );
+		$contenido = str_replace( ']]>', ']]&gt;', $contenido );
 		echo "<li><h2>$titulo<i></i></h2><strong>$sub_titulo</strong> $content<a href='$link' class='quote'>VER MÁS</a></li>";
 	}
 	if($estilo=="Miniatura"){
