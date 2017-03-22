@@ -4,16 +4,16 @@ Class CustomPosts{
 	public function __construct()
 	{
 		$this->customPostsTypes=array(
-			array(
-				'customPostName'=>'slider',
-				'Name'=>'Sliders',
-				'Singular'=>'Slider',
-				),
-			array(
-				'customPostName'=>'servicios',
-				'Name'=>'Servicios',
-				'Singular'=>'Servicio',
-				),
+			// array(
+			// 	'customPostName'=>'slider',
+			// 	'Name'=>'Sliders',
+			// 	'Singular'=>'Slider',
+			// 	),
+			// array(
+			// 	'customPostName'=>'servicios',
+			// 	'Name'=>'Servicios',
+			// 	'Singular'=>'Servicio',
+			// 	),
 			array(
 				'customPostName'=>'proyecto',
 				'Name'=>'Proyectos',
@@ -24,11 +24,11 @@ Class CustomPosts{
 				'Name'=>'Testimonios',
 				'Singular'=>'Testimonio',
 				),
-			array(
-				'customPostName'=>'equipo',
-				'Name'=>'Equipo',
-				'Singular'=>'Equipo',
-				),
+			// array(
+			// 	'customPostName'=>'equipo',
+			// 	'Name'=>'Equipo',
+			// 	'Singular'=>'Equipo',
+			// 	),
 			);
 		add_action( 'init', array($this,'create_posts_types') );
 
