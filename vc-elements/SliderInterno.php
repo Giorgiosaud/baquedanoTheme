@@ -6,7 +6,7 @@ Element Description: VC Slider
 vc_map( array(
     "name" => __("Slider", "my-text-domain"),
     "base" => "slider",
-    "as_parent" => array('only' => 'slide_interno'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
+    "as_parent" => array('only' => 'slide'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
     "content_element" => true,
     "show_settings_on_create" => false,
     "is_container" => true,
