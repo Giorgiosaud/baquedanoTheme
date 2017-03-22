@@ -30,30 +30,12 @@ class vcTestimonios extends WPBakeryShortCode {
                 'weight'=>10,
                 'category'=>__('Structure'),
                 'group'=>__('Partes Baquedano'),
-                'front_enqueue_js'=>array(
-                    // get_template_directory_uri().'/assets/js/jquery-1.11.2.min.js',
-                    get_template_directory_uri().'/assets/js/jquery.easing.js',
-                    get_template_directory_uri().'/assets/js/bootstrap.min.js',
-                    get_template_directory_uri().'/assets/js/less.js',
-                    get_template_directory_uri().'/assets/js/jquery.bxproject.js',
-                    get_template_directory_uri().'/assets/js/jquery.flexproject.js',
-                    get_template_directory_uri().'/assets/js/site.js',
-                    ),
-                'front_enqueue_css'=>array(
-                   get_template_directory_uri().'/assets/css/bootstrap.min.css',
-                   get_template_directory_uri().'/assets/css/font-awesome.min.css',
-                   get_template_directory_uri().'/assets/css/global.css',
-                   'http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300%7CLibre+Baskerville:400,400italic,700%7CLato:400,300,300italic,400italic,700,700italic,900,900italic',
-                   get_template_directory_uri().'/assets/css/style.css',
-                   get_template_directory_uri().'/assets/css/responsive.css',
-                   get_template_directory_uri().'/assets/css/skin.less',
-
-                   ),
+                
                 'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
                 'params'=>array(
                     array(
                         'type'=>'textfield',
-                        'holder'=>'div',
+                        'holder'=>'h1',
                         'class'=>'titulo',
                         'heading' => __( 'Titulo' ),
                         'param_name' => 'titulo',
@@ -65,7 +47,7 @@ class vcTestimonios extends WPBakeryShortCode {
                         ),
                     array(
                         'type'=>'textfield',
-                        'holder'=>'div',
+                        'holder'=>'h4',
                         'class'=>'subtitulo',
                         'heading' => __( 'Sub Titulo' ),
                         'param_name' => 'subtitulo',
@@ -77,13 +59,11 @@ class vcTestimonios extends WPBakeryShortCode {
                         ),
                     array(
                         'type'=>'textfield',
-                        'holder'=>'div',
-                        'class'=>'testimonios',
                         'heading' => __( 'Cantidad de Testimonios' ),
                         'param_name' => 'testimonios',
                         'value' => 4,
                         'description' => __( 'Cantidad de Testimonios' ),
-                        'admin_label' => false,
+                        'admin_label' => true,
                         'weight' => 0,
                         'group' => 'Partes Baquedano',
                         )
