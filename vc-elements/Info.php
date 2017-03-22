@@ -144,9 +144,7 @@ class vcInfo extends WPBakeryShortCode {
 								?>
 								<li class="zoom">
 									<figure>
-										<a href="#"> 
 											<?= wp_get_attachment_image($arrayImages[$i],'full');?>
-										</a>
 									</figure>
 								</li>
 								<?php

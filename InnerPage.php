@@ -12,7 +12,7 @@ while ( have_posts() ) : the_post();
 
 <!--content Section Start Here -->
 <div id="content">
-	<div id="slider" class="banner-container parallax" style="background-image:url(<?php the_post_thumbnail_url( 'full' );?>)" >
+	<div id="slider" class="banner-container parallax" style="background:url(<?php the_post_thumbnail_url( 'full' );?>) no-repeat 0 0" >
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
