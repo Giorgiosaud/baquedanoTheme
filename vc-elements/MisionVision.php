@@ -133,30 +133,32 @@ class vcMisionVision extends WPBakeryShortCode {
 		ob_start();  
 		?>
 
-
-		<div class="col-xs-12">
-			<div class="video-container clearfix">
-				<div class="video-box">
-					<?= wp_get_attachment_image($imagen,'full') ?>
-				</div>
-				<div class="our-detail animate-effect">
-					<div class="box">
-						<i class="icon-<?= $icono_1?>"></i>
-						<strong><?= $titulo_1 ?></strong>
-						<p>
-							<?= $contenido_1 ?>
-						</p>
+		<div class="container">
+			<div class="col-xs-12">
+				<div class="video-container clearfix">
+					<div class="video-box">
+						<?= wp_get_attachment_image($imagen,'full') ?>
 					</div>
-					<div class="box">
-						<i class="icon-<?= $icono_2?>"></i>
-						<strong><?= $titulo_2 ?></strong>
-						<p>
-							<?= $contenido_2 ?>
-						</p>
+					<div class="our-detail animate-effect">
+						<div class="box">
+							<i class="icon-<?= $icono_1?>"></i>
+							<strong><?= $titulo_1 ?></strong>
+							<p>
+								<?= $contenido_1 ?>
+							</p>
+						</div>
+						<div class="box">
+							<i class="icon-<?= $icono_2?>"></i>
+							<strong><?= $titulo_2 ?></strong>
+							<p>
+								<?= $contenido_2 ?>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<?php
 		$output_string = ob_get_contents();
 		ob_end_clean();
