@@ -75,7 +75,7 @@ vc_map( array(
     "name" => __("Slide", "my-text-domain"),
     "base" => "slide",
     "content_element" => true,
-    "as_child" => array('only' => 'slider_interno'), // Use only|except attributes to limit parent (separate multiple values with comma)
+    "as_child" => array('only' => 'slider'), // Use only|except attributes to limit parent (separate multiple values with comma)
     'weight'=>10,
     'category'=>__('Structure'),
     'group'=>__('Partes Baquedano'),
