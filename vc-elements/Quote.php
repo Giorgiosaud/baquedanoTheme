@@ -68,7 +68,7 @@ class vcQuote extends WPBakeryShortCode {
 					'heading' => __( 'Imagen', 'baquedano' ),
 					'param_name' => 'imagen',
 					'description' => __( 'Imagen a Mostrar', 'baquedano' ),
-					'admin_label' => false,
+					'admin_label' => true,
 					'weight' => 0,
 					'group' => 'Partes Baquedano',
 					)

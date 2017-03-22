@@ -68,6 +68,7 @@ class vcMisionVision extends WPBakeryShortCode {
 				array(
 					'type' => 'textarea',
 					'heading' => __( 'Contenido 1' ),
+					'holder' => 'p',
 					'param_name' => 'contenido_1',
 					'value' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare odio et massa dignissim, at accumsan metus viverra. Integer neque lectus.', 'baquedano' ),
 					'description' => __( 'Contenido 1', 'baquedano' ),
@@ -101,6 +102,7 @@ class vcMisionVision extends WPBakeryShortCode {
 				array(
 					'type' => 'textarea',
 					'heading' => __( 'Contenido 2' ),
+					'holder' => 'p',
 					'param_name' => 'contenido_2',
 					'value' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare odio et massa dignissim, at accumsan metus viverra. Integer neque lectus.', 'baquedano' ),
 					'description' => __( 'Contenido 2', 'baquedano' ),
