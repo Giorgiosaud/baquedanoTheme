@@ -142,7 +142,7 @@ class vcSlideInterno extends WPBakeryShortCode {
                 ),  
               )
 
-            ))
+            ));
     }
     public function vc_slide_interno_html(){
         extract(shortcode_atts(array(
