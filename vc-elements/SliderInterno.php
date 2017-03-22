@@ -133,7 +133,10 @@ function vc_slide_interno_html($atts,$content){
         echo "<strong>$titulo</strong>";
     }
     if($estilo=="Content"){
-        echo "<li class='inner-bottom-sec'>$content<a href='$link'>VER MÁS</a></li>";
+        $contenido = $content;
+        $contenido = apply_filters( 'the_content', $contenido );
+        $contenido = str_replace( ']]>', ']]&gt;', $contenido );
+        echo "<li class='inner-bottom-sec'>$contenido<a href='$link'>VER MÁS</a></li>";
     }
 }
 //Your "container" content element should extend WPBakeryShortCodesContainer class to inherit all required functionality
