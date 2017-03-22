@@ -132,7 +132,7 @@ add_shortcode( 'servicio',  'vc_servicio_interno_html'  );
 function vc_servicio_interno_html($atts,$content){
 	extract(shortcode_atts(array(
 		'titulo'=>__('Servicio 1'),
-		'sub_titulo'=>__('www.baquedanoconsultores.cl')
+		'sub_titulo'=>__('www.baquedanoconsultores.cl'),
 		'imagen'=>'83',
 		'link'=>'#', 
 		'estilo'=>'Titulo'
