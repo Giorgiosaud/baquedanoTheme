@@ -2129,10 +2129,10 @@
 	border-radius: 3px
 }
 .our-team-container .bx-prev{
-	left:-100px;
+	left:-50px;
 }
 .our-team-container .bx-next {
-	right: -100px;
+	right: -50px;
 	
 }
 .our-team-container .bx-prev:before,.our-team-container .bx-next:before{
