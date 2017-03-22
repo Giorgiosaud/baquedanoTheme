@@ -1,11 +1,11 @@
 <?php
 /*
-Element Description: VC Info Box
+Element Description: VC Slider
 */
 //Register "container" content element. It will hold all your inner (child) content elements
 vc_map( array(
-    "name" => __("Slider Interno", "my-text-domain"),
-    "base" => "slider_interno",
+    "name" => __("Slider", "my-text-domain"),
+    "base" => "slider",
     "as_parent" => array('only' => 'slide_interno'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
     "content_element" => true,
     "show_settings_on_create" => false,
@@ -25,7 +25,7 @@ vc_map( array(
         ),
     "js_view" => 'VcColumnView'
     ) );
-add_shortcode( 'slider_interno', 'vc_slider_interno_html'  );
+add_shortcode( 'slider', 'vc_slider_interno_html'  );
 
 function vc_slider_interno_html($atts,$content){
     extract(shortcode_atts(array(
@@ -72,8 +72,8 @@ function vc_slider_interno_html($atts,$content){
 
 }
 vc_map( array(
-    "name" => __("Slide Interno", "my-text-domain"),
-    "base" => "slide_interno",
+    "name" => __("Slide", "my-text-domain"),
+    "base" => "slide",
     "content_element" => true,
     "as_child" => array('only' => 'slider_interno'), // Use only|except attributes to limit parent (separate multiple values with comma)
     'weight'=>10,
@@ -115,7 +115,7 @@ vc_map( array(
             )
         )
     ) );
-add_shortcode( 'slide_interno',  'vc_slide_interno_html'  );
+add_shortcode( 'slide',  'vc_slide_interno_html'  );
 function vc_slide_interno_html($atts,$content){
     extract(shortcode_atts(array(
         'titulo'=>__('WWW.BAQUEDANOCONSULTORES.CL. <i></i>'),
@@ -136,7 +136,7 @@ function vc_slide_interno_html($atts,$content){
 }
 //Your "container" content element should extend WPBakeryShortCodesContainer class to inherit all required functionality
 if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
-    class WPBakeryShortCode_Slider_Interno extends WPBakeryShortCodesContainer {
+    class WPBakeryShortCode_Slider extends WPBakeryShortCodesContainer {
     }
 }
 if ( class_exists( 'WPBakeryShortCode' ) ) {
