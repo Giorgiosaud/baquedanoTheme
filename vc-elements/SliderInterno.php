@@ -13,7 +13,7 @@ class vcSliderInterno extends WPBakeryShortCode {
     }
 
     // Element Mapping
-    public function vc_slider_mapping() {
+    public function vc_slider_interno_mapping() {
 
         // Stop all if VC is not enabled
         if ( !defined( 'WPB_VC_VERSION' ) ) {
@@ -96,7 +96,7 @@ class vcSlideInterno extends WPBakeryShortCode {
     }
 
     // Element Mapping
-    public function vc_slide_mapping() {
+    public function vc_slide_interno_mapping() {
 
         // Stop all if VC is not enabled
         if ( !defined( 'WPB_VC_VERSION' ) ) {
