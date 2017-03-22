@@ -75,7 +75,7 @@
 									);
 								wp_nav_menu($args);
 								?>
-								<a href="/contacto" class="quote"><?php _e('CONTACTO','baquedano')?></a>
+								<a href="/home/contacto" class="quote"><?php _e('CONTACTO','baquedano')?></a>
 							</div>
 
 						</div>
