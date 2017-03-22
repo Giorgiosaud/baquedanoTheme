@@ -33,7 +33,7 @@ class vcQuote extends WPBakeryShortCode {
 			'params'=>array(
 				array(
 					'type' => 'textfield',
-					'holder' => 'h4',
+					'holder' => 'h1',
 					'class' => 'section-header',
 					'heading' => __( 'Titulo' ),
 					'param_name' => 'titulo',
@@ -45,6 +45,7 @@ class vcQuote extends WPBakeryShortCode {
 					),  
 				array(
 					'label' => __( 'Informacion', 'baquedano' ),
+					'holder' => 'p',
 					'type' => 'textarea_html',
 					'param_name' => 'content',
 					'value'=>__('Te ofrecemos soluciones habitacionales adaptadas a tus necesidades.','baquedano'),
@@ -52,7 +53,8 @@ class vcQuote extends WPBakeryShortCode {
 					'group' => 'Partes Baquedano',
 					),
 				array(
-					'type' => 'textarea_raw_html',
+					'type' => 'textfield',
+					'holder'=>'div',
 					'heading' => __( 'Boton' ),
 					'param_name' => 'boton',
 					'value' => __( '<a href="#">SOLICITAR MÁS INFORMACIÓN</a>', 'baquedano' ),
@@ -63,8 +65,6 @@ class vcQuote extends WPBakeryShortCode {
 					),  
 				array(
 					'type' => 'attach_image',
-					'holder' => 'div',
-					'class' => 'images-class',
 					'heading' => __( 'Imagen', 'baquedano' ),
 					'param_name' => 'imagen',
 					'description' => __( 'Imagen a Mostrar', 'baquedano' ),
