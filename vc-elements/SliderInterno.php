@@ -30,9 +30,9 @@ add_shortcode( 'slider', 'vc_slider_interno_html'  );
 function vc_slider_interno_html($atts,$content){
     extract(shortcode_atts(array(
         ),$atts));
-    $content_image=str_replace("[slide_interno ",'[slide_interno estilo="Imagen" ',$content);
-    $content_titulo=str_replace("[slide_interno ",'[slide_interno estilo="Titulo" ',$content);
-    $content_content=str_replace("[slide_interno ",'[slide_interno estilo="Content" ',$content);
+    $content_image=str_replace("[slide ",'[slide estilo="Imagen" ',$content);
+    $content_titulo=str_replace("[slide ",'[slide estilo="Titulo" ',$content);
+    $content_content=str_replace("[slide ",'[slide estilo="Content" ',$content);
     ob_start();  
     ?>
     <div id="slider">
@@ -124,14 +124,16 @@ function vc_slide_interno_html($atts,$content){
         'link'=>'#', 
         'estilo'=>'Titulo'
         ),$atts));
+    // die(var_dump(wp_get_attachment_image($imagen,'full')));
     if($estilo=="Imagen"){
-        echo '<li>'.wp_get_attachment_image($imagen,'Sliders Size').'</li>';
+        $imagenTag=wp_get_attachment_image($imagen,'full');
+        echo "<li>$imagenTag</li>";
     }
     if($estilo=="Titulo"){
-        echo '<strong>'.$titulo.'</strong>';
+        echo "<strong>$titulo</strong>";
     }
     if($estilo=="Content"){
-        echo '<li class="inner-bottom-sec">'.$content.'<a href="'.$link.']?>">VER MÁS</a></li>';
+        echo "<li class='inner-bottom-sec'>$content<a href='$link'>VER MÁS</a></li>";
     }
 }
 //Your "container" content element should extend WPBakeryShortCodesContainer class to inherit all required functionality
