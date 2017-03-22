@@ -1,0 +1,20 @@
+{
+    "name": "jorgelsaud/baquedano",
+    "authors": [
+        {
+            "name": "Jorge Saud",
+            "email": "jorgelsaud@gmail.com"
+        }
+    ],
+    "autoload":{
+    	"psr-4":{
+		"Giorgiosaud\\Baquedano\\":"includes/"
+	},
+	"files":[
+	"plugins/class-tgm-plugin-activation.php",
+	"plugins/MyPlugins.php",
+	"includes/helpers.php"
+	]
+    },
+    "require": {}
+}
