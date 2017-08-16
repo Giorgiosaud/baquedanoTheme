@@ -45,7 +45,7 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 	}
 	if( is_post_type_archive() ) {
 
-		$title = post_type_archive_title( '', false );
+		$title = 'Proyectos';
 
 	}
 
