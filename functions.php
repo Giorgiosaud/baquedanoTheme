@@ -36,3 +36,19 @@ function vc_before_init_actions() {
 	require_once( get_template_directory().'/vc-elements/Contacto.php' ); 
 
 }
+add_filter( 'get_the_archive_title', function ( $title ) {
+
+	if( is_category() ) {
+
+		$title = single_cat_title( '', false );
+
+	}
+	if( is_post_type_archive() ) {
+
+		$title = post_type_archive_title( '', false );
+
+	}
+
+	return $title;
+
+});
