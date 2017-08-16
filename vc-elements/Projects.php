@@ -80,7 +80,7 @@ class vcProject extends WPBakeryShortCode {
             ),$atts));
         
         $link = vc_build_link( $link );
-        die(var_dump($link));
+        // die(var_dump($link));
         $args=array(
             'post_type' => 'proyecto',
             'posts_per_page'=>$proyectos
@@ -111,7 +111,7 @@ class vcProject extends WPBakeryShortCode {
         <div class="project-container">
             <div class="container">
                 <div class="row">
-                    <a href="#" class="our-project"><?=$titulo?></a>
+                    <a href="<?= $link['url']; ?>" class="our-project"><?=$titulo?></a>
                     <?php $iterator=0;
                     foreach ($posts as $post) 
                     {
