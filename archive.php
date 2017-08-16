@@ -1,5 +1,9 @@
 <?php
-get_header();
+get_header();?>
+<div class="container">
+					<h3><?php the_title()?></h3>
+</div>
+<?php
 while ( have_posts() ) : the_post();
 
 // If comments are open or we have at least one comment, load up the comment template.
