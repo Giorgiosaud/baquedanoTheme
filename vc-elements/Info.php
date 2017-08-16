@@ -97,7 +97,7 @@ class vcInfo extends WPBakeryShortCode {
 
 
 	// Element HTML
-	public function vc_info_html( $atts,$content ) {
+	public function vc_info_html( $atts,$content=null ) {
 		extract(shortcode_atts(array(
 			'title'=>__('¿Quienes Somos?'),
 			// 'content'=>__('Baquedano Consultores nace de la necesidad de un mejor financiamiento hipotecario, que es entregado haciendo competir a las distintas entidades (bancos, compañías de seguro, leasing), logrando mejores condiciones comerciales a nuestros clientes. Desde aquí se Proyecta al servicio de Corretaje de Propiedades, con la ventaja competitiva de conectar los clientes compradores con Créditos ya aprobados y los propietarios que requieren la venta, esto conjugado con el servicio de arriendo y administración de propiedades de uso habitacional. Ingresando finalmente al sector de terrenos Industriales y/o paños. Logrando la mejor oferta posible a los dueños de terreno o sitio.'),
@@ -107,6 +107,9 @@ class vcInfo extends WPBakeryShortCode {
 			'tercer_destacado'=>'<strong><span>TERCER</span>DESTACADO</strong>'
 
 			),$atts));
+		if(is_null($content)){
+			$content=__('Baquedano Consultores nace de la necesidad de un mejor financiamiento hipotecario, que es entregado haciendo competir a las distintas entidades (bancos, compañías de seguro, leasing), logrando mejores condiciones comerciales a nuestros clientes. Desde aquí se Proyecta al servicio de Corretaje de Propiedades, con la ventaja competitiva de conectar los clientes compradores con Créditos ya aprobados y los propietarios que requieren la venta, esto conjugado con el servicio de arriendo y administración de propiedades de uso habitacional. Ingresando finalmente al sector de terrenos Industriales y/o paños. Logrando la mejor oferta posible a los dueños de terreno o sitio.');
+		}
 		$arrayImages=explode(',', $imagenes);
 		ob_start();  
 		?>
