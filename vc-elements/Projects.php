@@ -53,6 +53,16 @@ class vcProject extends WPBakeryShortCode {
                         'admin_label' => true,
                         'weight' => 0,
                         'group' => 'Partes Baquedano',
+                        ),
+                    array(
+                        'type'=>'vc_link',
+                        'heading' => __( 'Link del Titulo' ),
+                        'param_name' => 'link',
+                        'value' => 'https://baquedanoconsultores.cl/home/proyecto',
+                        'description' => __( 'Link a Proyectos' ),
+                        // 'admin_label' => true,
+                        // 'weight' => 0,
+                        'group' => 'Partes Baquedano',
                         )
                     )
                 )
