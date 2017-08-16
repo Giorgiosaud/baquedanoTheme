@@ -37,7 +37,7 @@ while ( have_posts() ) : the_post();
 	</div>
 	<div class="container">	
 
-	<?php the_excerpt(); ?>
+	<?php the_content(); ?>
 	</div>
 	<?php endwhile; // End of the loop.
 	?>
