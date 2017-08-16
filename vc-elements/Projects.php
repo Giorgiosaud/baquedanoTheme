@@ -58,7 +58,7 @@ class vcProject extends WPBakeryShortCode {
                         'type'=>'vc_link',
                         'heading' => __( 'Link del Titulo' ),
                         'param_name' => 'link',
-                        'value' => 'https://baquedanoconsultores.cl/home/proyecto',
+                        // 'value' => 'https://baquedanoconsultores.cl/home/proyecto',
                         'description' => __( 'Link a Proyectos' ),
                         // 'admin_label' => true,
                         // 'weight' => 0,
@@ -72,11 +72,10 @@ class vcProject extends WPBakeryShortCode {
 
 
     // Element HTML
-    public function vc_project_html( $atts ) {
+    public function vc_project_html( $atts ,$link) {
         extract(shortcode_atts(array(
             'proyectos'=>2,
             'titulo'=>'<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>',
-            'link'=>''
             ),$atts));
         var_dump($link);
         $args=array(
