@@ -78,7 +78,7 @@ class vcProject extends WPBakeryShortCode {
             'titulo'=>'<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>',
             'link'=>'#'
             ),$atts));
-        die(var_dump($link));
+        // die(var_dump($link));
         $args=array(
             'post_type' => 'proyecto',
             'posts_per_page'=>$proyectos
