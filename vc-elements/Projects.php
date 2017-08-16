@@ -75,10 +75,10 @@ class vcProject extends WPBakeryShortCode {
     public function vc_project_html( $atts ) {
         extract(shortcode_atts(array(
             'proyectos'=>2,
-            'titulo'=>'<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>'
-
+            'titulo'=>'<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>',
+            'link'=>''
             ),$atts));
-
+        var_dump($link);
         $args=array(
             'post_type' => 'proyecto',
             'posts_per_page'=>$proyectos
