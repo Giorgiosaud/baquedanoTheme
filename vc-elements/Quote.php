@@ -78,14 +78,18 @@ class vcQuote extends WPBakeryShortCode {
 
 
 	// Element HTML
-	public function vc_quote_html( $atts ) {
+	public function vc_quote_html( $atts,$content=null ) {
 		extract(shortcode_atts(array(
 			'titulo'=>__('WWW.BAQUEDANOCONSULTORES.CL. <i></i>'),
-			'content'=>__('Te ofrecemos soluciones habitacionales adaptadas a tus necesidades.'),
+			// 'content'=>__('Te ofrecemos soluciones habitacionales adaptadas a tus necesidades.'),
 			'imagen'=>'83',
 			'boton'=>'<a href="#">SOLICITAR MÁS INFORMACIÓN</a>'
 
 			),$atts));
+		if(is_null($content)){
+			$content=__('incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+		}
+		$content = apply_filters( 'the_content', $content );
 		$arrayImages=explode(',', $imagenes);
 		ob_start();  
 		?>
@@ -97,7 +101,7 @@ class vcQuote extends WPBakeryShortCode {
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="quote-box animate-effect">
-						<h4><?= $titulo?></h4>
+							<h4><?= $titulo?></h4>
 							<p>
 								<?= $content?>
 							</p>
