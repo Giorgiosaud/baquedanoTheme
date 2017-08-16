@@ -76,6 +76,7 @@ class vcProject extends WPBakeryShortCode {
         extract(shortcode_atts(array(
             'proyectos'=>2,
             'titulo'=>'<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>',
+            'link'=>'#'
             ),$atts));
         var_dump($link);
         $args=array(
