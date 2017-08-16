@@ -33,17 +33,27 @@ class vcProject extends WPBakeryShortCode {
                 'icon'=>get_template_directory_uri().'/assets/img/logo_baquedano.png',
                 'params'=>array(
                     array(
-                        'type'=>'textfield',
-                        'holder'=>'div',
-                        'class'=>'titulo',
-                        'heading' => __( 'Titulo' ),
-                        'param_name' => 'titulo',
-                        'value' => __('<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>'),
-                        'description' => __( 'Titulo de Seccion' ),
-                        'admin_label' => false,
-                        'weight' => 0,
+                        'type'=>'vc_link',
+                        'heading' => __( 'Link del Titulo' ),
+                        'param_name' => 'link',
+                        // 'value' => 'https://baquedanoconsultores.cl/home/proyecto',
+                        'description' => __( 'Link a Proyectos' ),
+                        // 'admin_label' => true,
+                        // 'weight' => 0,
                         'group' => 'Partes Baquedano',
                         ),
+                    // array(
+                    //     'type'=>'textfield',
+                    //     'holder'=>'div',
+                    //     'class'=>'titulo',
+                    //     'heading' => __( 'Titulo' ),
+                    //     'param_name' => 'titulo',
+                    //     'value' => __('<span>NUESTROS <strong>PROYECTOS</strong> <em></em> </span>'),
+                    //     'description' => __( 'Titulo de Seccion' ),
+                    //     'admin_label' => false,
+                    //     'weight' => 0,
+                    //     'group' => 'Partes Baquedano',
+                    //     ),
                     array(
                         'type'=>'textfield',
                         'heading' => __( 'Cantidad de Proyectos' ),
@@ -53,17 +63,8 @@ class vcProject extends WPBakeryShortCode {
                         'admin_label' => true,
                         'weight' => 0,
                         'group' => 'Partes Baquedano',
-                        ),
-                    array(
-                        'type'=>'vc_link',
-                        'heading' => __( 'Link del Titulo' ),
-                        'param_name' => 'link',
-                        // 'value' => 'https://baquedanoconsultores.cl/home/proyecto',
-                        'description' => __( 'Link a Proyectos' ),
-                        // 'admin_label' => true,
-                        // 'weight' => 0,
-                        'group' => 'Partes Baquedano',
                         )
+                    
                     )
                 )
             );
