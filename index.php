@@ -28,9 +28,6 @@ while ( have_posts() ) : the_post();
 				<div class="breadcrumbs-box">
 					<ul class="clearfix">
 						<li>
-							<a href="#">inicio</a>
-						</li>
-						<li>
 							<?php the_title()?>
 						</li>
 					</ul>
