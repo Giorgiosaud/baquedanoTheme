@@ -2,7 +2,7 @@
 /*
 Template Name: Pagina Interna
 
- */
+*/
 get_header();
 while ( have_posts() ) : the_post();
 
@@ -27,6 +27,10 @@ while ( have_posts() ) : the_post();
 			<div class="col-xs-12">
 				<div class="breadcrumbs-box">
 					<ul class="clearfix">
+	
+						<li>
+							<a href="#">Proyectos</a>
+						</li>
 						<li>
 							<?php the_title()?>
 						</li>
@@ -37,10 +41,10 @@ while ( have_posts() ) : the_post();
 	</div>
 	<div class="container">	
 
-	<?php the_content(); ?>
+		<?php the_content(); ?>
 	</div>
-	<?php endwhile; // End of the loop.
-	?>
+<?php endwhile; // End of the loop.
+?>
 </div>
 
 
