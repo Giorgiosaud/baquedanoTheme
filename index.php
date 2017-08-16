@@ -38,8 +38,10 @@ while ( have_posts() ) : the_post();
 			</div>
 		</div>
 	</div>
+	<div class="container">	
 
 	<?php the_content(); ?>
+	</div>
 	<?php endwhile; // End of the loop.
 	?>
 </div>
