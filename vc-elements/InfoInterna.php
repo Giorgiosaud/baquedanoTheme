@@ -80,14 +80,17 @@ class vcInfoInterna extends WPBakeryShortCode {
 
 
 	// Element HTML
-	public function vc_info_interna_html( $atts ) {
+	public function vc_info_interna_html( $atts,$content=null ) {
 		extract(shortcode_atts(array(
 			'title'=>__('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare odio et massa dignissim'),
 			'sub_title'=>__('LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR.'),
-			'content'=>__('incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+			// 'content'=>__('incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
 			'imagenes'=>'50,51,52,53',
 			),$atts));
 		$arrayImages=explode(',', $imagenes);
+		if(is_null($content)){
+			$content=__('incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+		}
 		ob_start();  
 		?>
 		<div class="container">
