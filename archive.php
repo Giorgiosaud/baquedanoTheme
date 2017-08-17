@@ -29,7 +29,8 @@ while ( have_posts() ) : the_post();
 
 	
 	<?php endwhile; // End of the loop.
-	bootstrap_pagination();
+	 if ( function_exists('wp_bootstrap_pagination') )
+    wp_bootstrap_pagination();
 	?>
 
 </div>
