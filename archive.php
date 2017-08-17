@@ -19,7 +19,7 @@ while ( have_posts() ) : the_post();
 			</div>
 			</div>
 			<div class="col-xs-12 col-md-9">
-				<h3><?php the_title()?></h3>
+				<a href="<?php the_permalink()?>"><h3><?php the_title()?></h3></a>
 					<?php the_excerpt(); ?>
 			</div>
 		</div>
