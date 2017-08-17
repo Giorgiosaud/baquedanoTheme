@@ -25,9 +25,14 @@ while ( have_posts() ) : the_post();
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
+				<img src="<?php the_post_thumbnail_url( 'full' );?>" alt="Main image">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
 				<div class="breadcrumbs-box">
 					<ul class="clearfix">
-	
+						
 						<li>
 							<a href="#">Proyectos</a>
 						</li>
