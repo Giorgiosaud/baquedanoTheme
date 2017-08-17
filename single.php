@@ -12,8 +12,8 @@ while ( have_posts() ) : the_post();
 
 <!--content Section Start Here -->
 <div id="content">
-<div class="container top" id="slider">
-</div>
+	<div class="container top" id="slider">
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
