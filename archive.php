@@ -1,7 +1,6 @@
 <?php
 get_header();?>
 <div class="container top" id="slider">
-	<?php the_archive_title('<h3>','</h3>')?>
 </div>
 <?php
 while ( have_posts() ) : the_post();
@@ -12,35 +11,22 @@ while ( have_posts() ) : the_post();
 
 <!--content Section Start Here -->
 <div id="content">
-	<!-- <div id="slider" class="banner-container parallax" style="background:url(<?php the_post_thumbnail_url( 'full' );?>) no-repeat 0 0" > -->
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-12 col-md-3">
+			<div class="container-fluid">
+				<?php the_post_thumbnail('full');?>
+			</div>
+			</div>
+			<div class="col-xs-12 col-md-9">
 				<h3><?php the_title()?></h3>
+					<?php the_excerpt(); ?>
 			</div>
 		</div>
 		<!-- </div> -->
 	</div>
-	<div class="clearfix"></div>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="breadcrumbs-box">
-					<ul class="clearfix">
-						<li>
-							<a href="#">Inicio</a>
-						</li>
-						<li>
-							<?php the_title()?>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container">	
 
-		<?php the_excerpt(); ?>
+	
 	<?php endwhile; // End of the loop.
 	?>
 </div>
