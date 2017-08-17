@@ -28,10 +28,15 @@ while ( have_posts() ) : the_post();
 	</div>
 
 	
-	<?php endwhile; // End of the loop.
+	<?php endwhile; // End of the loop.?>
+<div class="container-fluid">
+	<div class="col-xs-12 col-md-6 col-push-md-3">
+	<?php
 	 if ( function_exists('wp_bootstrap_pagination') )
     wp_bootstrap_pagination();
-	?>
+	?>	
+	</div>
+</div>
 
 </div>
 
