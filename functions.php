@@ -53,9 +53,3 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 	return $title;
 
 });
-function exclude_category( $query ) {
-    // if ( $query->is_home() && $query->is_main_query() ) {
-        $query->set( 'posts_per_page', '2' );
-    // }
-}
-add_action( 'pre_get_posts', 'exclude_category' );
