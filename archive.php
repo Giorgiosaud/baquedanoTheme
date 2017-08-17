@@ -21,6 +21,7 @@ while ( have_posts() ) : the_post();
 			<div class="col-xs-12 col-md-9">
 				<a href="<?php the_permalink()?>"><h3><?php the_title()?></h3></a>
 					<?php the_excerpt(); ?>
+					<a href="<?php the_permalink()?> " class="quote">VER MÁS</a>
 			</div>
 		</div>
 		<!-- </div> -->
