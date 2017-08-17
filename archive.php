@@ -14,32 +14,29 @@ while ( have_posts() ) : the_post();
 	<div class="container">
 		<div class="row form-group">
 			<div class="col-xs-12 col-md-3">
-			<div class="container-fluid">
-				<?php the_post_thumbnail('full');?>
-			</div>
+				<div class="container-fluid">
+					<?php the_post_thumbnail('full');?>
+				</div>
 			</div>
 			<div class="col-xs-12 col-md-9">
 				<a href="<?php the_permalink()?>"><h3><?php the_title()?></h3></a>
-					<?php the_excerpt(); ?>
-					<a href="<?php the_permalink()?> " class="quote">VER MÁS</a>
+				<?php the_excerpt(); ?>
+				<a href="<?php the_permalink()?> " class="quote">VER MÁS</a>
 			</div>
 		</div>
 		<!-- </div> -->
 	</div>
 
-	
-	<?php endwhile; // End of the loop.?>
+<?php endwhile; // End of the loop.?>
 <div class="container-fluid">
-	<div class="col-xs-12 col-md-6 col-push-md-3">
-	<?php
-	 if ( function_exists('wp_bootstrap_pagination') )
-    wp_bootstrap_pagination();
-	?>	
+	<div class="col-xs-12 col-md-6 col-md-push-3">
+		<?php
+		if ( function_exists('wp_bootstrap_pagination') )
+			wp_bootstrap_pagination();
+		?>	
 	</div>
 </div>
-
 </div>
-
 
 
 <?php
